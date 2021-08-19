@@ -27,19 +27,25 @@ var questions = [
 
 
 for(var i = 0;i < questions.length;i++){
-  console.log("\n---------------------------------------------------------------------\n");
-  var que = readlineSync.question(questions[i].question);
-  if(questions[i].answer.toUpperCase().includes(que.toUpperCase())){
-    console.log(`Great work ${userName}, you have answered correct.`);
-    console.log("your current score is : ",score=score+2)
-  }
-  else{
-   
-      console.log("You answered wrong!!!")
-      console.log("your current score is : ",score=score-1)
-    }
-    
+  console.log("---------------------------------------------------------------------\n");
+  var que = questions[i]
+
+  quiz(que.question, que.answer)   
   
+}
+
+function quiz (question, answer){
+  var userAnswer = readlineSync.question(question);
+  
+  if (userAnswer === answer) {
+    console.log('You are right');
+    score++;
+    console.log("Score : ",score, "\n")
+
+  } else {
+    console.log('You are wrong '+'the right answer is '+ answer);
+    score--;
+    console.log("Score : ",score, "\n")}
 }
 
 console.log("\n---------------------------------------------------------------------\n")
